@@ -1,0 +1,5 @@
+<h3>TODO: add proper validations</h3>
+<%= semantic_form_for @episode do |f| %>
+  <%= f.inputs :title, :subtitle, :summary, :audio_link %>
+  <%= f.actions :submit, :cancel %>
+<% end %>
