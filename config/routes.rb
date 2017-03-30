@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :users, only: [:show, :edit, :update]
+
+  resources :episodes, only: [:show, :edit, :update, :create, :new]
 end
