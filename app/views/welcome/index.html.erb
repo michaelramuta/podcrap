@@ -1,2 +1,5 @@
 <p>Hey, I guess you're logged into the stupid app. Look at all the things you can do here!</p>
+<% if current_user.podcast_configured? %>
+  <p>Your podcast settings are configured. Good job.</p>
+<% end %>
 <p><%= link_to('Fill out your profile', edit_user_path(current_user)) %></p>

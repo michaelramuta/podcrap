@@ -5,6 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   def podcast_configured?
-    false
+    title.present? && website.present? && copyright.present? && subtitle.present? && summary.present? && description.present? && username.present? && category.present?
   end
 end
