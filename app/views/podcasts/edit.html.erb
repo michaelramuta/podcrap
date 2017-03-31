@@ -1,0 +1,20 @@
+<h3>Fill Out Your Profile</h3>
+<%= link_to('Confused about how to fill out this form? Read this first', help_index_path) %>
+<%= semantic_form_for @podcast do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :title %>
+    <%= f.input :website %>
+    <%= f.input :category, :as => :select, :collection => ['Arts', 'Business', 'Comedy', 'Education', 'Games & Hobbies', 'Government & Organizations', 'Health', 'Kids & Family', 'Music', 'News & Politics', 'Religion & Spirituality', 'Science & Medicine', 'Society & Culture', 'Sports & Recreation', 'Technology', 'TV & Film'] %>
+    <%= f.input :copyright %>
+    <%= f.input :subtitle %>
+    <%= f.input :summary %>
+    <%= f.input :description %>
+    <%= f.input :username %>
+    <%= f.input :explicit %>
+    <%= f.input :image_link %>
+  <% end %>
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :button %>
+    <%= f.action :cancel, :as => :link %>
+  <% end %>
+<% end %>
