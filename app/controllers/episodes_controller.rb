@@ -8,7 +8,7 @@ class EpisodesController < ApplicationController
 
   def create
     @user = current_user
-    @episode = Episode.new(params[:episode].permit(:title, :subtitle, :summary, :audio_link))
+    @episode = Episode.new(params[:episode].permit(:title, :subtitle, :summary, :audio_link, :image_link, :length, :duration))
     @episode.user = current_user
     if @episode.save
       redirect_to root_path
@@ -23,7 +23,7 @@ class EpisodesController < ApplicationController
 
   def update
     @episode = Episode.find(params[:id])
-    if @episode.update_attributes(params[:episode].permit(:title, :subtitle, :summary, :audio_link))
+    if @episode.update_attributes(params[:episode].permit(:title, :subtitle, :summary, :audio_link, :image_link, :length, :duration))
         redirect_to root_path
     else
         render 'edit'

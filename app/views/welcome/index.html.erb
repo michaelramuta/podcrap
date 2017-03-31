@@ -1,6 +1,6 @@
 <p>Welcome <%= current_user.email %></p>
 <p>Hey, I guess you're logged into the stupid app. Look at all the things you can do here!</p>
-<p><%= link_to('View XML feed', root_path) %></p>
+<p><%= link_to('View XML feed', user_path(current_user, :format => 'xml'), target: :_blank) %></p>
 <% if current_user.podcast_configured? %>
   <p>Your podcast settings are configured. Good job. <%= link_to('They can be edited here.', edit_user_path(current_user)) %></p>
 <% else %>
