@@ -4,4 +4,7 @@ class Episode < ApplicationRecord
   default_scope { order("created_at ASC") }
 
   # before_save :validate_episode
+  # things to validate:
+  # length is formatted correctly
+  # duration is formatted correctly
 end
