@@ -1,14 +1,13 @@
 <p>Welcome <%= current_user.email %></p>
-<p>Hey, I guess you're logged into the stupid app. Look at all the things you can do here!</p>
-<p><%= link_to('View XML feed', user_path(current_user, :format => 'xml'), target: :_blank) %></p>
 <% if current_user.podcast_configured? %>
   <p>Your podcast settings are configured. Good job. <%= link_to('They can be edited here.', edit_user_path(current_user)) %></p>
+  <p><%= link_to('View XML feed', user_path(current_user, :format => 'xml'), target: :_blank) %></p>
+  <p><%= link_to('Add new podcast episode', new_episode_path) %></p>
+  <ol>
+    <% @episodes.each do |episode| %>
+      <li><%= episode.title %> - <%= link_to('Edit episode', edit_episode_path(episode)) %></li>
+    <% end %>
+  </ol>
 <% else %>
   <p>You still need to update your podcast settings, <%= link_to('do that here', edit_user_path(current_user)) %></p>
 <% end %>
-<p><%= link_to('Add new podcast episode', new_episode_path) %></p>
-<ol>
-  <% @episodes.each do |episode| %>
-    <li><%= episode.title %> - <%= link_to('Edit episode', edit_episode_path(episode)) %></li>
-  <% end %>
-</ol>

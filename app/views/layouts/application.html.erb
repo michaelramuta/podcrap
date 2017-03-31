@@ -9,9 +9,11 @@
   </head>
 
   <body>
-    <h1><%= link_to('podcrap', root_path) %></h1>
-    <p>a stupid podcast app</p>
+    <h3><%= link_to('podcrap', root_path) %></h3>
+    <h5>a stupid podcast app</h5>
     <% if user_signed_in? %>
+      <li>
+        <%= link_to('Help', help_index_path) %>
       <li>
         <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
       </li>

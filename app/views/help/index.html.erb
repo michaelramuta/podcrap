@@ -1,0 +1,43 @@
+<h3>Setup:</h3>
+<ol>
+  <li>Create an email address for your podcast and register for archive.org (I’m trying to keep this shit free)</li>
+  <li>create account with podcast email address</li>
+  <li>Update your podcast settings, all fields must be filled in</li>
+  <ul>
+    <li>For image_link: upload a jpg or png image to archive.org</li>
+    <ul>
+      <li>Image must be 1400x1400 pixels</li>
+    </ul>
+  <li>Add a new podcast episode, all fields must be filled in (look at https://podcrap.herokuapp.com/users/1 for reference if you get confused)</li>
+  <ul>
+    <li>For image_link: upload a jpg or png image to archive.org</li>
+    <li>For audio_link: upload a .m4a audio file to archive.org<li>
+    <ul><li>Yes, you can use other audio types. .mp3, .aac,  .mp4, .m4p, .m4r, .3gp should all work, but .m4a is going to be the best quality at the smallest size (which means people can download it faster and it costs me less money to maintain this site)</li></ul>
+    <li>For length: type in the byte size of the audio file. On a mac, you can select “Get Info” on the file and you should see Size. That’s what you’re looking for. If you don’t have a mac… I don’t know how to figure this out. You don’t need to put in commas, just the number
+    <li>For duration: that’s just either minutes:seconds or hours:minutes:seconds. (“01:01” or “01:01:01”). Include the colons</li>
+  </ul>
+  <li>Okay, now things get easier.</li>
+  <li>Click “View XML Feed”</li>
+  <li>Copy the URL, that is your podcast feed!</li>
+  <li>Go to http://validator.w3.org/feed/ and validate your feed. You should see “This is a valid RSS feed”. You might see a recommendation about missing an atom:link. I still need to figure this out but lets assume it doesn’t matter</li>
+  <li>Go to https://podcastsconnect.apple.com and sign in with an apple id</li>
+  <li>Click the + button on the top left</li>
+  <li>Enter your podcast and click validate</li>
+  <li>Click submit!</li>
+  <li>You might get an email. Let me see what happens once mine is approved (if it approved). I imagine it takes a little while</li>
+</ol>
+
+<h3>For uploading images/audio to archive.org:</h3>
+<ol>
+  <li>Create account</li>
+  <li>Click the upload button at the top of the screen</li>
+  <li>Click ‘Upload Files’</li>
+  <li>I cannot believe I’m spelling this out so directly, you must be dumb</li>
+  <li>Drag and drop your file into the box area</li>
+  <li>Fill in Description and Subject. These don’t matter, but they’re required</li>
+  <li>It might take a minute to upload. Don’t complain, it is free.</li>
+  <li>Click “Go To Your Page”</li>
+  <li>Click “Show All” under Downloads</li>
+  <li>There will be a few options, the one you want is probably at the top. The file should have the same extension (.png, .jpg, .m4a). Click on your file</li>
+  <li>Copy the url from the top of the page</li>
+</ol>

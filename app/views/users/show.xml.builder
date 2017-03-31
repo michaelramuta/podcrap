@@ -23,7 +23,7 @@ xml.rss "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.0.dtd", "version
         xml.tag!('itunes:subtitle', episode.subtitle)
         xml.tag!('itunes:summary', episode.summary)
         xml.tag!('itunes:image', 'href' => url_formatter(episode.image_link))
-        xml.tag!('enclosure', 'url' => url_formatter(episode.audio_link), 'length' => episode.length, 'type' => 'audio/mpeg')
+        xml.tag!('enclosure', 'url' => url_formatter(episode.audio_link), 'length' => episode.length.gsub(/\D/, ''), 'type' => 'audio/mpeg')
         xml.guid url_formatter(episode.audio_link)
         xml.pubDate episode.created_at.to_s(:rfc822)
         xml.tag!('itunes:duration', episode.duration) 
