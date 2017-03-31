@@ -13,7 +13,7 @@ xml.rss "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.0.dtd", "version
       xml.tag!('itunes:name', @user.username)
       xml.tag!('itunes:email', @user.email)
     end
-    xml.tag!('itunes:image', 'href' => @user.image_link)
+    xml.tag!('itunes:image', 'href' => url_formatter(@user.image_link))
     xml.tag!('itunes:category', 'text' => 'TV & Film')
     xml.tag!('itunes:explicit', @user.explicit ? 'Yes' : 'No')
     @episodes.each do |episode|
@@ -22,9 +22,9 @@ xml.rss "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.0.dtd", "version
         xml.tag!('itunes:author', @user.username)
         xml.tag!('itunes:subtitle', episode.subtitle)
         xml.tag!('itunes:summary', episode.summary)
-        xml.tag!('itunes:image', 'href' => episode.image_link)
-        xml.tag!('enclosure', 'url' => episode.audio_link, 'length' => episode.length, 'type' => 'audio/mpeg')
-        xml.guid episode.audio_link
+        xml.tag!('itunes:image', 'href' => url_formatter(episode.image_link))
+        xml.tag!('enclosure', 'url' => url_formatter(episode.audio_link), 'length' => episode.length, 'type' => 'audio/mpeg')
+        xml.guid url_formatter(episode.audio_link)
         xml.pubDate episode.created_at.strftime('%d %b %Y %H:%M:%S %Z')
         xml.tag!('itunes:duration', episode.duration) 
       end
