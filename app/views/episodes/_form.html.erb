@@ -1,3 +1,5 @@
+<%= link_to('Confused about how to fill out this form? Read this first', help_index_path) %>
+
 <%= semantic_form_for @episode do |f| %>
   <%= f.inputs :title, :subtitle, :summary, :audio_link, :image_link, :length, :duration %>
   <%= f.actions :submit, :cancel %>

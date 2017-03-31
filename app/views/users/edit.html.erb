@@ -1,4 +1,5 @@
 <h3>Fill Out Your Profile</h3>
+<%= link_to('Confused about how to fill out this form? Read this first', help_index_path) %>
 <%= semantic_form_for @user do |f| %>
   <%= f.inputs :title, :website, :copyright, :subtitle, :summary, :description, :username, :category, :explicit, :image_link %>
   <%= f.actions :submit, :cancel %>
