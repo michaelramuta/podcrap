@@ -1,5 +1,6 @@
 class EpisodesController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :authorize, :except => [:new, :create]
 
   def new
     @user = current_user
@@ -34,5 +35,12 @@ class EpisodesController < ApplicationController
     @episode = Episode.find(params[:id])
     @episode.destroy
     redirect_to root_path
+  end
+
+  private
+  def authorize
+    if Episode.find(params[:id]).user != current_user
+      redirect_to root_path
+    end
   end
 end
