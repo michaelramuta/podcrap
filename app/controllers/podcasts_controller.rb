@@ -1,6 +1,6 @@
 class PodcastsController < ApplicationController
   before_filter :authenticate_user!, :except => :show
-  before_filter :authorize, :except => :show
+  before_filter :authorize, :except => [:show, :new, :create]
 
   def edit
     @podcast = Podcast.find(params[:id])
@@ -21,6 +21,21 @@ class PodcastsController < ApplicationController
     respond_to do |format|
       format.html
       format.xml
+    end
+  end
+
+  def new
+    @podcast = Podcast.new
+  end
+
+  def create
+    @user = current_user
+    @podcast = Podcast.new(params[:podcast].permit(:title, :website, :copyright, :subtitle, :summary, :description, :username, :category, :explicit, :image_link))
+    @podcast.user = current_user
+    if @podcast.save
+      redirect_to root_path
+    else
+      render 'new'
     end
   end
 
