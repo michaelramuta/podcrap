@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   resources :episodes, only: [:edit, :update, :create, :new, :destroy]
 
   resources :help, only: [:index]
+
+  get '/users/:id' => 'podcasts#show'
 end
