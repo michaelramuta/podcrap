@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>podcrap</title>
-    <%= csrf_meta_tags %>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
     <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
   </head>
 
@@ -20,7 +23,15 @@
       </li>
     <% end %>
     <%= yield %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class="row">
+      <div class="medium-12 columns">
+        <p class="text-center"><%= notice %></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="medium-12 columns">
+        <p class="text-center"><%= alert %></p>
+      </div>
+    </div>
   </body>
 </html>
