@@ -23,7 +23,15 @@
       </li>
     <% end %>
     <%= yield %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class="row">
+      <div class="medium-12 columns">
+        <p class="text-center"><%= notice %></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="medium-12 columns">
+        <p class="text-center"><%= alert %></p>
+      </div>
+    </div>
   </body>
 </html>
