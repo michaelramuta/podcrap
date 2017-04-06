@@ -4,7 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+    <title>podcarp</title>
+    <meta property="og:url"                content="https://podcarp.herokuapp.com" />
+    <meta property="og:type"               content="website" />
+    <meta property="og:title"              content="Podcarp: Free Podcast Hosting" />
+    <meta property="og:description"        content="Host your podcast for free. Really. Okay, if your podcast becomes super successful it might not be able to handle all your downloads. Good luck with that though." />
+    <meta property="og:image"              content="/assets/fb_image.jpg" />
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
@@ -14,7 +19,7 @@
 
   <body>
     <h3><%= link_to('podcarp', root_path) %></h3>
-    <h5>a stupid podcast app</h5>
+    <h5>a fishy podcast app</h5>
     <% if user_signed_in? %>
       <li>
         <%= link_to('Help', help_index_path) %>

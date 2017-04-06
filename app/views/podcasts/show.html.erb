@@ -1,4 +1,4 @@
-<h1>Pocdast Info</h1>
+<h3>Podcast Info</h1>
 <ul>
   <li>Title: <%= @podcast.title %></li>
   <li>Copyright: <%= @podcast.copyright %></li>
@@ -9,6 +9,7 @@
   <li>Category: <%= @podcast.category %></li>
   <li>Explicit: <%= @podcast.explicit ? 'Yes' : 'No' %></li>
   <br>
+  <h3>Episodes</h1>
   <% @episodes.each_with_index do |episode, index| %>
     <li>Episode <%= index + 1 %></li>
     <ul>

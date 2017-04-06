@@ -2,8 +2,10 @@
 <% if current_user.podcast.nil? %>
   <p><%= link_to('Create your podcast!', new_podcast_path(current_user.podcast)) %></p>
 <% else %>
-  <p>Your podcast settings are configured. Good job. <%= link_to('They can be edited here.', edit_podcast_path(current_user.podcast)) %></p>
-  <p><%= link_to('View XML feed', podcast_path(current_user.podcast, :format => 'xml'), target: :_blank) %></p>
+  <p>Your podcast settings are configured. Good job. <%= link_to('They can be edited here.', edit_podcast_path(
+  current_user.podcast)) %></p>
+  <p><%= link_to('View XML Feed', podcast_path(current_user.podcast, :format => 'xml'), target: :_blank) %></p>
+  <p><%= link_to('View All Episodes', podcast_path(current_user.podcast)) %></p>
   <p><%= link_to('Add new podcast episode', new_episode_path) %></p>
   <ol>
     <% @episodes.each do |episode| %>
