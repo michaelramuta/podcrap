@@ -1,6 +1,20 @@
 <%= link_to('Confused about how to fill out this form? Read this first', help_index_path) %>
 
 <%= semantic_form_for @episode do |f| %>
-  <%= f.inputs :title, :subtitle, :summary, :audio_link, :image_link, :length, :duration %>
-  <%= f.actions :submit, :cancel %>
+  <%= f.inputs do %>
+    <%= f.input :title %>
+    <%= f.input :subtitle %>
+    <%= f.input :summary %>
+    <%= f.input :audio_link %>
+    <%= f.input :image_link %>
+    <%= f.input :length %>
+    <%= f.input :duration %>
+    <% if @episode.new_record? && current_user.episodes.last.live? %>
+      <%= f.input :live, :label => 'Release episode now' %>
+    <% end %>
+  <% end %>
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :button %>
+    <%= f.action :cancel, :as => :link %>
+  <% end %>
 <% end %>
