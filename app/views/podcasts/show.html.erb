@@ -13,13 +13,7 @@
 <h3>Episodes</h1>
 <ol>
   <% @episodes.each_with_index do |episode, index| %>
-    <li><%= episode.title %> <%= link_to('Edit episode', edit_episode_path(episode)) if current_user && current_user.podcast == @podcast %></li>
-    <% if !episode.live? %>
-      <strong>EPISODE NOT LIVE</Strong>
-      <% if current_user.episodes.where(live: false).first == episode %>
-        - <%= link_to('Push Live Now', episode_go_live_path(episode), method: 'patch') %>
-      <% end %>
-    <% end %>
+    <li><%= episode.title %></li>
     <ul>
       <li>Subtitle: <%= episode.subtitle %></li>
       <li>Summary: <%= episode.summary %></li>
