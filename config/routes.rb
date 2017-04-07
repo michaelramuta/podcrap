@@ -9,5 +9,5 @@ Rails.application.routes.draw do
 
   resources :help, only: [:index]
 
-  get '/users/:id' => 'podcasts#show'
+  resources :users, only: [:show]
 end
