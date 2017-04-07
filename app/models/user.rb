@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :episodes
   has_one :podcast
+
+  def first_non_live_episode
+    episodes.where(live: false).first
+  end
 end
