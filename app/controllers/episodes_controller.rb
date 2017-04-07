@@ -1,6 +1,6 @@
 class EpisodesController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :authorize, :except => [:new, :create]
+  before_filter :authorize, :except => [:new, :create, :go_live]
 
   def new
     @user = current_user
@@ -9,7 +9,8 @@ class EpisodesController < ApplicationController
 
   def create
     @user = current_user
-    @episode = Episode.new(params[:episode].permit(:title, :subtitle, :summary, :audio_link, :image_link, :length, :duration))
+    @episode = Episode.new(params[:episode].permit(:title, :subtitle, :summary, :audio_link, :image_link, :length, :duration, :live))
+    @episode.live = false if !current_user.episodes.last.live?
     @episode.user = current_user
     if @episode.save
       redirect_to root_path
@@ -35,6 +36,13 @@ class EpisodesController < ApplicationController
     @episode = Episode.find(params[:id])
     @episode.destroy
     redirect_to root_path
+  end
+
+  def go_live
+    episode = Episode.find(params[:episode_id])
+    episode.live = true
+    episode.save
+    redirect_to user_path(current_user)
   end
 
   private

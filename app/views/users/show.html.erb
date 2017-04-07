@@ -5,11 +5,38 @@
   <p>Your podcast settings are configured. Good job. <%= link_to('They can be edited here.', edit_podcast_path(
   current_user.podcast)) %></p>
   <p><%= link_to('View XML Feed', podcast_path(current_user.podcast, :format => 'xml'), target: :_blank) %></p>
-  <p><%= link_to('View All Episodes', podcast_path(current_user.podcast)) %></p>
   <p><%= link_to('Add new podcast episode', new_episode_path) %></p>
+  <h3>Podcast Info</h1>
+  <ul>
+    <li>Title: <%= @podcast.title %></li>
+    <li>Copyright: <%= @podcast.copyright %></li>
+    <li>Author: <%= @podcast.username %></li>
+    <li>Summary: <%= @podcast.summary %></li>
+    <li>Description: <%= @podcast.description %></li>
+    <li>Image Link: <a href="<%= @podcast.image_link %>"><%= @podcast.image_link %></a></li>
+    <li>Category: <%= @podcast.category %></li>
+    <li>Explicit: <%= @podcast.explicit ? 'Yes' : 'No' %></li>
+  </ul>
+  <br>
+  <h3>Episodes</h1>
   <ol>
-    <% @episodes.each do |episode| %>
+    <% @episodes.each_with_index do |episode, index| %>
       <li><%= episode.title %> - <%= link_to('Edit episode', edit_episode_path(episode)) %></li>
+      <% if !episode.live? %>
+        <strong>EPISODE NOT LIVE</Strong>
+        <% if current_user.episodes.where(live: false).first == episode %>
+          - <%= link_to('Push Live Now', episode_go_live_path(episode), method: 'patch') %>
+        <% end %>
+      <% end %>
+      <ul>
+        <li>Subtitle: <%= episode.subtitle %></li>
+        <li>Summary: <%= episode.summary %></li>
+        <li>Episode Image: <a href="<%= episode.image_link %>"><%= episode.image_link %></a></li>
+        <li>Length: <%= episode.length.gsub(/\D/, '') %></li>
+        <li>Duration: <%= episode.duration %></li>
+        <li>Audio Link: <a href="<%= episode.audio_link %>"><%= episode.audio_link %></a></li>
+      </ul>
+      <br>
     <% end %>
   </ol>
 <% end %>
