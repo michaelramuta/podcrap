@@ -1,7 +1,8 @@
 class WelcomeController < ApplicationController
-  before_filter :authenticate_user!
 
   def index
-    @episodes = current_user.episodes
+    if user_signed_in?
+      redirect_to user_path(current_user)
+    end
   end
 end
