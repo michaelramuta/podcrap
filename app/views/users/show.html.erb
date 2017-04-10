@@ -24,7 +24,7 @@
       <li><%= episode.title %> - <%= link_to('Edit episode', edit_episode_path(episode)) %></li>
       <% if !episode.live? %>
         <strong>EPISODE NOT LIVE</Strong>
-        <% if current_user.episodes.where(live: false).first == episode %>
+        <% if current_user.first_non_live_episode == episode %>
           - <%= link_to('Push Live Now', episode_go_live_path(episode), method: 'patch') %>
         <% end %>
       <% end %>
