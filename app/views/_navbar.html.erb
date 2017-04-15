@@ -1,0 +1,27 @@
+<div class='title-bar' data-responsive-toggle='responsive-menu' data-hide-for='medium'>
+  <button class='menu-icon' type='button' data-toggle='responsive-menu'></button>
+</div>
+
+<div class='top-bar' id='responsive-menu'>
+  <div class='top-bar-left'>
+    <ul class='menu'>
+      <li>
+        <%= link_to root_path, class: 'site-title' do %>
+          <strong>podcarp</strong>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+  <div class='top-bar-right'>
+    <ul class='menu'>
+      <% if user_signed_in? %>
+        <li>
+          <%= link_to('Help', help_index_path) %>
+        </li>
+        <li>
+          <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

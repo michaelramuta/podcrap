@@ -18,16 +18,10 @@
   </head>
 
   <body>
-    <h3><%= link_to('podcarp', root_path) %></h3>
-    <h5>Free & Simple Podcast Hosting</h5>
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to('Help', help_index_path) %>
-      <li>
-        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-      </li>
-    <% end %>
-    <%= yield %>
+    <%= render partial: '/navbar' %>
+    <div class='column row'>
+      <%= yield %>
+    </div>
     <div class="row">
       <div class="medium-12 columns">
         <p class="text-center"><%= notice %></p>
