@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   resources :podcasts, only: [:show, :edit, :update, :create, :new]
 
-  resources :episodes, only: [:edit, :update, :create, :new, :destroy]
+  resources :episodes, only: [:edit, :update, :create, :new, :destroy] do
+    patch :go_live
+  end
 
   resources :help, only: [:index]
 
