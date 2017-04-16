@@ -10,7 +10,7 @@ class EpisodesController < ApplicationController
   def create
     @user = current_user
     @episode = Episode.new(params[:episode].permit(:title, :subtitle, :summary, :audio_link, :image_link, :length, :duration, :live))
-    @episode.live = false if !current_user.episodes.last.live?
+    @episode.live = false unless current_user.episodes.last&.live?
     @episode.user = current_user
     if @episode.save
       redirect_to root_path

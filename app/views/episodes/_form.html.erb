@@ -9,7 +9,7 @@
     <%= f.input :image_link %>
     <%= f.input :length %>
     <%= f.input :duration %>
-    <% if @episode.new_record? && current_user.episodes.last.live? %>
+    <% if @episode.new_record? && current_user.episodes.last&.live? %>
       <%= f.input :live, :label => 'Release episode now' %>
     <% end %>
   <% end %>
