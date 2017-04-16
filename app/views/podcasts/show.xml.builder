@@ -1,6 +1,5 @@
 xml.instruct!
-xml.instruct! 'xml-stylesheet', :type=>'text/xsl', :media=>'screen', :href=>'/~d/styles/rss2full.xsl'
-xml.rss "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.0.dtd", "version" => "2.0" do
+xml.rss "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.0.dtd", "version" => "2.0", "xmlns:atom" => "http://www.w3.org/2005/Atom" do
   xml.channel do 
     xml.title @podcast.title
     xml.link @podcast.website
@@ -14,6 +13,7 @@ xml.rss "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.0.dtd", "version
       xml.tag!('itunes:name', @podcast.username)
       xml.tag!('itunes:email', @podcast.user.email)
     end
+    xml.tag!('atom:link', 'href' => "http://www.podcarp.com/podcasts/#{@podcast.id}.xml", 'rel' => 'self', 'type' => 'application/rss+xml')
     xml.tag!('itunes:image', 'href' => url_formatter(@podcast.image_link))
     xml.tag!('itunes:category', 'text' => @podcast.category)
     xml.tag!('itunes:explicit', @podcast.explicit ? 'Yes' : 'No')
