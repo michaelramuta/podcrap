@@ -5,6 +5,7 @@ class EpisodesController < ApplicationController
   def new
     @user = current_user
     @episode = Episode.new
+    @episode.image_link = current_user.podcast.image_link if current_user.podcast.present?
   end
 
   def create
