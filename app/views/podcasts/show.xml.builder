@@ -1,4 +1,5 @@
 xml.instruct!
+xml.instruct! 'xml-stylesheet', :type=>'text/xsl', :media=>'screen', :href=>'/~d/styles/rss2full.xsl'
 xml.rss "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.0.dtd", "version" => "2.0" do
   xml.channel do 
     xml.title @podcast.title
