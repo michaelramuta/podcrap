@@ -1,49 +1,45 @@
-<h3>Setup:</h3>
+<h3>account setup:</h3>
 <ol>
-  <li>Create an email address for your podcast and register for <a href='https://archive.org/' target='_blank'>archive.org</a> (I’m trying to keep this shit free)</li>
-  <li>create account with podcast email address</li>
+  <li>Create a podcarp account</li>
   <li>Update your podcast settings, all fields must be filled in</li>
-  <ul>
-    <li>For image_link: upload a jpg or png image to <a href='https://archive.org/' target='_blank'>archive.org</a></li>
-    <ul>
-      <li>Image must be 1400x1400 pixels</li>
-    </ul>
-  </ul>
   <li>Add a new podcast episode, all fields must be filled in (look at <a href='/podcasts/1' target='_blank'>my sample podcast</a> for reference if you get confused)</li>
   <ul>
-    <li>For image_link: upload a jpg or png image to <a href='https://archive.org/' target='_blank'>archive.org</a></li>
-    <li>For audio_link: upload a .m4a audio file to <a href='https://archive.org/' target='_blank'>archive.org</a><li>
-    <ul><li>Yes, you can use other audio types. .mp3, .aac,  .mp4, .m4p, .m4r, .3gp should all work, but .m4a is going to be the best quality at the smallest size (which means people can download it faster and it costs me less money to maintain this site)</li></ul>
-    <li>For length: type in the byte size of the audio file. On a mac, you can select “Get Info” on the file and you should see Size. That’s what you’re looking for. If you don’t have a mac… I don’t know how to figure this out. You don’t need to put in commas, just the number
-    <li>For duration: that’s just either minutes:seconds or hours:minutes:seconds. (“01:01” or “01:01:01”). Include the colons</li>
+    <li>.mp3, .aac, .mp4, .m4p, .m4r, .3gp should all work, but .m4a is going to be the best quality at the smallest size (which means people can download it faster and it costs me less money to maintain this site)</li>
   </ul>
-  <li>Okay, now things get easier.</li>
   <li>Click “View XML Feed”</li>
   <li>Copy the URL, that is your podcast feed!</li>
-  <li>Go to <a href='http://validator.w3.org/feed/' target='_blank'>validator.w3.org/feed</a> and validate your feed. You should see “This is a valid RSS feed”. You might see a recommendation about missing an atom:link. I still need to figure this out but lets assume it doesn’t matter</li>
+  <li>Go to <a href='http://validator.w3.org/feed/' target='_blank'>validator.w3.org/feed</a> and validate your feed. You should see “This is a valid RSS feed”</li>
   <li>Go to <a href='https://podcastsconnect.apple.com' target='_blank'>podcastsconnect.apple.com</a> and sign in with an apple id</li>
   <li>Click the + button on the top left</li>
   <li>Enter your podcast and click validate</li>
   <li>Click submit!</li>
-  <li>You might get an email. Let me see what happens once mine is approved (if it approved). I imagine it takes a little while</li>
+  <li>You should get an email from Apple once your podcast has been added to the store</li>
 </ol>
 
-<h3>For uploading images/audio to <a href='https://archive.org/' target='_blank'>archive.org:</a></h3>
+<h3>adding episodes</h3>
 <ol>
-  <li>Create account</li>
+  <li>Create account at <a href='https://archive.org/' target='_blank'>archive.org:</a></li>
   <li>Click the upload button at the top of the screen</li>
   <li>Click ‘Upload Files’</li>
-  <li>I cannot believe I’m spelling this out so directly, you must be dumb</li>
   <li>Drag and drop your file into the box area</li>
   <li>Fill in Description and Subject. These don’t matter, but they’re required</li>
   <li>It might take a minute to upload. Don’t complain, it is free.</li>
   <li>Click “Go To Your Page”</li>
-  <li>Click “Show All” under Downloads</li>
-  <li>There will be a few options, the one you want is probably at the top. The file should have the same extension (.png, .jpg, .m4a). Click on your file</li>
-  <li>Copy the url from the top of the page</li>
+  <li>Copy the url from the top of the page. It should look like <i>https://archive.org/details/identifier</i></li>
+  <li>On the <a href='/episodes/new'>create new episode</a> page at Podcarp.com, paste the link into the <b>Archive.org Link</b> field and click <b>Populate Values</b>. This may take a minute.</li>
+  <li>Fill in Title, Subtitle, and Summary fields. Click 'Create Episode'</li>
 </ol>
 
-<h3>About Podcarp</h3>
+<h3>adding image to podcast/episode</h3>
+<ol>
+  <li>Image must be a jpg or jpeg and be 1400x1400 pixels</li>
+  <li>Upload file to <a href='https://archive.org/' target='_blank'>archive.org:</a> (just like episodes)</li>
+  <li>Click "Show all files"</li>
+  <li>Your image file should be near the top, right click on it and select "Copy Link Address"</li>
+  <li>Paste this into the Image Link field</li>
+</ol>
+
+<h3>about podcarp</h3>
 <p>Podcarp was built by Brian Fu and Michael Ramuta in 2017</p>
 <p>Podcarp is a totally free service. Feel free to buy either of us a beer if you feel grateful and are in Chicago</p>
 <p>If you have any issues with the app, email michaelramuta@gmail.com</p>
