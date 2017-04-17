@@ -1,6 +1,13 @@
 <%= link_to('Confused about how to fill out this form? Read this first', help_index_path) %>
-
-<%= semantic_form_for @episode do |f| %>
+<br><br>
+<form id="js-archive-populate">
+  <b>Archive.org Link</b><br>
+  <input type="text" name="js-archive-link">
+  <input type="submit" value="Populate Values">
+</form>
+<div id="js-archive-warning"></div>
+<br>
+<%= semantic_form_for @episode, :html => { :class => "episode_form" } do |f| %>
   <%= f.inputs do %>
     <%= f.input :title %>
     <%= f.input :subtitle %>
