@@ -13,18 +13,23 @@
     <li>Explicit: <%= @podcast.explicit ? 'Yes' : 'No' %></li>
   </ul>
   <br>
-  <h3>
-    Episodes
-    <%= link_to new_episode_path do %>
-      <i class="fi-plus success"></i>
+  <h5>
+    Add Episode
+    <%= link_to new_episode_path, class: 'new-episode' do %>
+      <i class="fa fa-plus-square hvr-icon-grow" aria-hidden="true"></i>
     <% end %>
-  </h3>
+  </h5>
     <div class='row small-up-1 medium-up-2 large-up-3'>
       <% @episodes.each_with_index do |episode, index| %>
       <div class='column'>
         <div class='card'>
           <div class='card-divider'>
-            <h4><%= episode.title %> - <%= link_to('Edit episode', edit_episode_path(episode)) %></h4>
+            <h4>
+              <%= episode.title %>
+              <%= link_to edit_episode_path(episode) do %>
+              <i class="fi-pencil"></i>
+              <% end %>
+            </h4>
           </div>
           <div class='card-section'>
             <% if !episode.live? %>
