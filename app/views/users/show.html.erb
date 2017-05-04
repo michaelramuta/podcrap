@@ -1,11 +1,6 @@
-<p>Welcome <%= current_user.email %></p>
 <% if current_user.podcast.nil? %>
   <p><%= link_to('Create your podcast!', new_podcast_path(current_user.podcast)) %></p>
 <% else %>
-  <p>Your podcast settings are configured. Good job. <%= link_to('They can be edited here.', edit_podcast_path(
-  current_user.podcast)) %></p>
-  <p><%= link_to('View XML Feed', podcast_path(current_user.podcast, :format => 'xml'), target: :_blank) %></p>
-  <p><%= link_to('Add new podcast episode', new_episode_path) %></p>
   <h3>Podcast Info</h1>
   <ul>
     <li>Title: <%= @podcast.title %></li>
@@ -18,25 +13,37 @@
     <li>Explicit: <%= @podcast.explicit ? 'Yes' : 'No' %></li>
   </ul>
   <br>
-  <h3>Episodes</h1>
-  <ol>
-    <% @episodes.each_with_index do |episode, index| %>
-      <li><%= episode.title %> - <%= link_to('Edit episode', edit_episode_path(episode)) %></li>
-      <% if !episode.live? %>
-        <strong>EPISODE NOT LIVE</Strong>
-        <% if current_user.first_non_live_episode == episode %>
-          - <%= link_to('Push Live Now', episode_go_live_path(episode), method: 'patch') %>
-        <% end %>
-      <% end %>
-      <ul>
-        <li>Subtitle: <%= episode.subtitle %></li>
-        <li>Summary: <%= episode.summary %></li>
-        <li>Episode Image: <a href="<%= episode.image_link %>"><%= episode.image_link %></a></li>
-        <li>Length: <%= episode.length.gsub(/\D/, '') %></li>
-        <li>Duration: <%= episode.duration %></li>
-        <li>Audio Link: <a href="<%= episode.audio_link %>"><%= episode.audio_link %></a></li>
-      </ul>
-      <br>
+  <h3>
+    Episodes
+    <%= link_to new_episode_path do %>
+      <i class="fi-plus success"></i>
     <% end %>
-  </ol>
+  </h3>
+    <div class='row small-up-1 medium-up-2 large-up-3'>
+      <% @episodes.each_with_index do |episode, index| %>
+      <div class='column'>
+        <div class='card'>
+          <div class='card-divider'>
+            <h4><%= episode.title %> - <%= link_to('Edit episode', edit_episode_path(episode)) %></h4>
+          </div>
+          <div class='card-section'>
+            <% if !episode.live? %>
+              <strong>EPISODE NOT LIVE</Strong>
+              <% if current_user.first_non_live_episode == episode %>
+                - <%= link_to('Push Live Now', episode_go_live_path(episode), method: 'patch') %>
+              <% end %>
+            <% end %>
+            <ul>
+              <li>Subtitle: <%= episode.subtitle %></li>
+              <li>Summary: <%= episode.summary %></li>
+              <li>Episode Image: <a href="<%= episode.image_link %>"><%= episode.image_link %></a></li>
+              <li>Length: <%= episode.length.gsub(/\D/, '') %></li>
+              <li>Duration: <%= episode.duration %></li>
+              <li>Audio Link: <a href="<%= episode.audio_link %>"><%= episode.audio_link %></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
 <% end %>
