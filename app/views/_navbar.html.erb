@@ -15,8 +15,10 @@
   <div class='top-bar-right'>
     <ul class='menu'>
       <% if user_signed_in? %>
-        <li><%= link_to('Podcast XML Feed', podcast_path(current_user.podcast, :format => 'xml'), target: :_blank) %></li>
-        <li><%= link_to('Podcast Settings', edit_podcast_path(current_user.podcast)) %></li>
+        <% if current_user.podcast %>
+          <li><%= link_to('Podcast XML Feed', podcast_path(current_user.podcast, :format => 'xml'), target: :_blank) %></li>
+          <li><%= link_to('Podcast Settings', edit_podcast_path(current_user.podcast)) %></li>
+        <% end %>
         <li>
           <%= link_to('Help', help_index_path) %>
         </li>
