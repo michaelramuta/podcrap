@@ -1,0 +1,13 @@
+@import 'modules/colors';
+
+.new-episode {
+  position: fixed;
+  bottom: 50px;
+  right: 0px;
+  cursor: pointer;
+  background-color: $moss-green;
+  width: 75px;
+  height: 55px;
+  border-radius: 5px 0px 0px 5px;
+  box-shadow: 5px 5px 2px #888888;
+}

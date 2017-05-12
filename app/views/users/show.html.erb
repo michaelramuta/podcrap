@@ -13,12 +13,6 @@
     <li>Explicit: <%= @podcast.explicit ? 'Yes' : 'No' %></li>
   </ul>
   <br>
-  <h5>
-    Add Episode
-    <%= link_to new_episode_path, class: 'new-episode' do %>
-      <i class="fa fa-plus-square hvr-icon-grow" aria-hidden="true"></i>
-    <% end %>
-  </h5>
     <div class='row small-up-1 medium-up-2 large-up-3'>
       <% @episodes.each_with_index do |episode, index| %>
       <div class='column'>
@@ -26,9 +20,6 @@
           <div class='card-divider'>
             <h4>
               <%= episode.title %>
-              <%= link_to edit_episode_path(episode) do %>
-              <i class="fi-pencil"></i>
-              <% end %>
             </h4>
           </div>
           <div class='card-section'>
@@ -38,17 +29,30 @@
                 - <%= link_to('Push Live Now', episode_go_live_path(episode), method: 'patch') %>
               <% end %>
             <% end %>
-            <ul>
-              <li>Subtitle: <%= episode.subtitle %></li>
-              <li>Summary: <%= episode.summary %></li>
-              <li>Episode Image: <a href="<%= episode.image_link %>"><%= episode.image_link %></a></li>
-              <li>Length: <%= episode.length.gsub(/\D/, '') %></li>
-              <li>Duration: <%= episode.duration %></li>
-              <li>Audio Link: <a href="<%= episode.audio_link %>"><%= episode.audio_link %></a></li>
-            </ul>
+            <dl>
+              <dt>Subtitle</dt>
+              <dd><%= episode.subtitle %></dd>
+              <dt>Summary</dt>
+              <dd><%= episode.summary %></dd>
+              <dt>Episode Image</dt>
+              <dd><a href="<%= episode.image_link %>"><%= episode.image_link %></a></dd>
+              <dt>Length</dt>
+              <dd><%= episode.length.gsub(/\D/, '') %></dd>
+              <dt>Duration</dt>
+              <dd><%= episode.duration %></dd>
+              <dt>Audio Link</dt>
+              <dd><a href="<%= episode.audio_link %>"><%= episode.audio_link %></a></dd>
+            </dl>
+            <%= link_to edit_episode_path(episode) do %>
+              <i class="fa fa-pencil fa-2x hvr-rotate float-right"></i>
+            <% end %>
+            <br>
           </div>
         </div>
       </div>
       <% end %>
     </div>
+<% end %>
+<%= link_to new_episode_path, class: 'new-episode' do %>
+  <i class="fa fa-plus fa-2x fa-inverse hvr-icon-grow"></i>
 <% end %>
