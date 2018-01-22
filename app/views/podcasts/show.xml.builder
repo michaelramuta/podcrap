@@ -17,7 +17,7 @@ xml.rss "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.0.dtd", "version
     xml.tag!('itunes:image', 'href' => url_formatter(@podcast.image_link))
     xml.tag!('itunes:category', 'text' => @podcast.category)
     xml.tag!('itunes:explicit', @podcast.explicit ? 'Yes' : 'No')
-    @episodes.each do |episode|
+    @episodes.sort{|a, b| b.created_at <=> a.created_at}.each do |episode|
       xml.item do
         xml.title episode.title
         xml.tag!('itunes:author', @podcast.username)
