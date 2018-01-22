@@ -17,7 +17,7 @@ class PodcastsController < ApplicationController
 
   def show
     @podcast = Podcast.find(params[:id])
-    @episodes = @podcast.user.episodes.where(live: true).sort{|x, y| y.created_at <=> z.created_at }
+    @episodes = @podcast.user.episodes.where(live: true)
     respond_to do |format|
       format.html
       format.xml
